@@ -23,6 +23,16 @@ class Matrix():
       self.rows = 1
       self.cols = len(m)
 
+  def _print(self, mat):
+    print()
+    print("<Debug> Printing the array...")
+    
+    if self.rows == 1:
+      print(mat)
+    else:
+      for row in range(len(mat)):
+        print(mat[row])
+
   def transpose(self):
     new_mat = []
     new_row = []
@@ -57,9 +67,15 @@ class Matrix():
 
         while c < cols:          
           print(f"<3> Position = {r} x {c}")
-          
-          new_row.append(self.matrix[c][r])
-          
+
+          try:
+            new_row.append(self.matrix[c][r])
+          except IndexError:
+            print(f"<Error> Position = {r} x {c}")
+            self._print(new_mat)
+            print(new_row)
+            raise
+            
           print(f"<4> ({r}) New Row = {new_row}")
           
           c += 1
