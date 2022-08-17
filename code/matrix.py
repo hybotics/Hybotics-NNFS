@@ -80,7 +80,7 @@ class Matrix():
 
   def print(self):
     print()
-    print("Printing final output...")
+    print("Printing array...")
     
     if self.rows == 1:
       print(self.matrix)

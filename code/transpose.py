@@ -1,5 +1,5 @@
 from matrix import Matrix
-'''
+
 mat = [ [0.49, 0.97, 0.53, 0.05, 0.33, 0.21],
         [0.65, 0.62, 0.51, 1.00, 0.38, 0.71],
         [0.61, 0.45, 0.74, 0.27, 0.64, 0.51],
@@ -15,7 +15,7 @@ mat = [ [0.49, 0.97, 0.53, 0.05, 0.33],
         [0.79, 0.32, 0.68, 0.90, 0.77] ]
 
 #mat = [1, 2, 3, 4, 5, 6]
-'''
+
 mat = [[1],
         [2],
         [3],
@@ -25,7 +25,7 @@ mat = [[1],
 '''
 
 def print_matrix(matrix):
-  print("<Transpose>")
+  print("<Transpose> Original array")
   rows = len(matrix)
 
   for r in range(rows):
