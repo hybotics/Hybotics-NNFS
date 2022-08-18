@@ -1,3 +1,5 @@
+import re
+
 class Matrix():
   def __init__(self, mat):
     self.rows = len(mat)
@@ -5,6 +7,7 @@ class Matrix():
     try:
       self.cols = len(mat[0])
     except TypeError:
+      # Special case for a regular [] list
       self.rows = 1
       self.cols = len(mat)
 
@@ -68,17 +71,16 @@ class Matrix():
         new_mat.append(new_row)
 
         r += 1
-        
-        if r >= rows:
-          break
 
     self._save(new_mat)
 
     return new_mat
 
-  def print(self):
+  def print(self, text=""):
     print()
-    print("Printing array...")
+    txt = f"Printing {text} array..."
+    txt = re.sub(r'[\s]+', ' ', txt)
+    print(txt)
     
     if self.rows == 1:
       print(self.matrix)
