@@ -78,7 +78,7 @@ class Matrix():
 
   def print(self, text=""):
     print()
-    txt = f"Printing {text} array..."
+    txt = f"Printing the{text} array."
     txt = re.sub(r'[\s]+', ' ', txt)
     print(txt)
     
