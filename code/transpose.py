@@ -39,7 +39,7 @@ def print_matrix(matrix):
     print(matrix[r])
 
 my_matrix = Matrix(mat)
-my_matrix.print("the original")
+my_matrix.print()
 #my_matrix.print()
 
 m = my_matrix.transpose()
