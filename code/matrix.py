@@ -7,8 +7,6 @@ class Matrix():
     except TypeError:
       self.rows = 1
       self.cols = len(mat)
-      
-    print(f"<init> rows = {self.rows}, cols = {self.cols}")
 
     self.matrix = mat
 
@@ -36,12 +34,9 @@ class Matrix():
   def transpose(self):
     new_mat = []
     new_row = []
+
     rows = self.rows
     cols = self.cols
-    
-    print(f"<2> Input array dimensions are {rows} x {cols}")
-    print(f"    Output array should be {cols} x {rows}")
-    print()
 
     if rows == 1:
       # Standard list (1 dimension array)
@@ -61,34 +56,21 @@ class Matrix():
       # This should handle everything else
       r = 0
 
-      while r < rows:
+      while r < cols:
         new_row = []
         c = 0
 
-        while c < cols:          
-          print(f"<3> Position = {r} x {c}")
-
-          try:
-            new_row.append(self.matrix[c][r])
-          except IndexError:
-            print(f"<Error> Position = {r} x {c}")
-            self._print(new_mat)
-            print(new_row)
-            raise
-            
-          print(f"<4> ({r}) New Row = {new_row}")
+        while c < rows:          
+          new_row.append(self.matrix[c][r])
           
           c += 1
 
-        print()
         new_mat.append(new_row)
 
         r += 1
         
         if r >= rows:
           break
-        
-      print(f"<5> New Matrix = {new_mat}")
 
     self._save(new_mat)
 
