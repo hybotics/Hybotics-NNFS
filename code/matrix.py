@@ -1,17 +1,20 @@
 import re
 
 class Matrix():
-  def __init__(self, mat):
-    self.rows = len(mat)
+  def __init__(self, mat_a=None, mat_b=None):
+    self.init = True
+    
+  def _dims(self, mat):
+    rows = len(mat)
 
     try:
-      self.cols = len(mat[0])
+      cols = len(mat[0])
     except TypeError:
       # Special case for a regular [] list
-      self.rows = 1
-      self.cols = len(mat)
-
-    self.matrix = mat
+      rows = 1
+      cols = len(mat)
+      
+    return rows, cols
 
   def _save(self, m):
     self.old_matrix = self.matrix
@@ -34,17 +37,35 @@ class Matrix():
       for row in range(len(mat)):
         print(mat[row])
 
-  def transpose(self):
+  def dot(self, mat_a, mat_b):
+    result = []
+
+    a_rows, a_cols = self._dims(mat_a)
+    b_rows, b_cols = self._dims(mat_b)
+
+    if a_rows != b_cols:
+      raise ValueError("The rows the first matrix must be the same as the colums of the second matrix")
+
+    for a_r in range(a_rows):
+      new_r = []
+      
+      for b_c in range(b_cols):
+        new_r.append(mat_a[a_r][a_c] * mat_b[b_c][b_r])
+        
+      result.append(new_r)
+
+    return result
+
+  def transpose(self, mat):
     new_mat = []
     new_row = []
 
-    rows = self.rows
-    cols = self.cols
+    rows, cols = self._dims(mat)
 
     if rows == 1:
       # Standard list (1 dimension array)
       for c in range(cols):
-        new_row.append([self.matrix[c]])
+        new_row.append([mat[c]])
         
       rows = len(new_row)
       cols = 1
@@ -52,7 +73,7 @@ class Matrix():
     elif cols == 1:
       # Standard single column
       for r in range(rows):
-        new_row.append(self.matrix[r][0])
+        new_row.append(mat[r][0])
       
       new_mat = new_row
     else:
@@ -64,7 +85,7 @@ class Matrix():
         c = 0
 
         while c < rows:          
-          new_row.append(self.matrix[c][r])
+          new_row.append(mat[c][r])
           
           c += 1
 
@@ -72,18 +93,19 @@ class Matrix():
 
         r += 1
 
-    self._save(new_mat)
+    #self._save(new_mat)
 
     return new_mat
 
-  def print(self, text=""):
-    print()
-    txt = f"Printing the{text} array."
+  def print(self, mat, text=""):
+    txt = f"Printing the {text} matrix."
     txt = re.sub(r'[\s]+', ' ', txt)
     print(txt)
     
-    if self.rows == 1:
-      print(self.matrix)
+    rows, cols = self._dims(mat)
+    
+    if rows == 1:
+      print(mat)
     else:
-      for row in range(self.rows):
-        print(self.matrix[row])
+      for row in range(rows):
+        print(mat[row])
