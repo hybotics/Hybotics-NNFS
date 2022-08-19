@@ -27,6 +27,12 @@ mat_2 = [ [0.53, 0.05],
         [0.17, 0.96],
         [0.68, 0.90] ]
 
+mat_2 = [ [1, 2, 3],
+        [4, 5, 6] ]
+
+mat_3 =[ [7, 8],
+        [9, 10],
+        [11, 12] ]
 
 mat_c = [1, 2, 3, 4, 5, 6]
 
@@ -39,12 +45,11 @@ mat_d = [[1],
 
 
 matrix = Matrix()
-matrix.print(mat_1, "first")
+matrix.print(mat_2, "first")
 print()
-matrix.print(mat_2, "second")
+matrix.print(mat_3, "second")
 print()
-print()
-m = matrix.dot(mat_1, mat_2)
+m = matrix.dot(mat_2, mat_3)
 matrix.print(m, "result")
 
 def print_matrix(matrix):

@@ -38,6 +38,7 @@ class Matrix():
         print(mat[row])
 
   def dot(self, mat_a, mat_b):
+    r_sum = 0.0
     result = []
 
     a_rows, a_cols = self._dims(mat_a)
@@ -47,11 +48,16 @@ class Matrix():
       raise ValueError("The rows the first matrix must be the same as the colums of the second matrix")
 
     for a_r in range(a_rows):
+      r_sum = 0.0
       new_r = []
-      
-      for b_c in range(b_cols):
-        new_r.append(mat_a[a_r][a_c] * mat_b[b_c][b_r])
         
+      for b_r in range(b_rows):
+        print(f"Position: ({a_r} x {b_r}) * ({b_r} x {a_r})")
+        r_sum += (mat_a[a_r][b_r] * mat_b[b_r][a_r])
+        
+      print(f"r_sum = {r_sum}")
+      new_r.append(r_sum)
+
       result.append(new_r)
 
     return result
