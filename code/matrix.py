@@ -45,18 +45,25 @@ class Matrix():
     b_rows, b_cols = self._dims(mat_b)
 
     if a_rows != b_cols:
-      raise ValueError("The rows the first matrix must be the same as the colums of the second matrix")
+      raise ValueError("The rows of the first matrix must be the same as the colums of the second matrix")
 
     for a_r in range(a_rows):
       r_sum = 0.0
       new_r = []
+      b_c = 0
+      a = 0
+      b = 0
         
-      for b_r in range(b_rows):
-        print(f"Position: ({a_r} x {b_r}) * ({b_r} x {a_r})")
-        r_sum += (mat_a[a_r][b_r] * mat_b[b_r][a_r])
+      for b_c in range(b_cols):
+        r_sum = 0
         
-      print(f"r_sum = {r_sum}")
-      new_r.append(r_sum)
+        for b_r in range(b_rows):
+          a = mat_a[a_r][b_r]
+          b = mat_b[b_r][b_c]
+          
+          r_sum += (a * b)
+
+        new_r.append(r_sum)
 
       result.append(new_r)
 
