@@ -44,13 +44,12 @@ class Matrix():
     a_rows, a_cols = self._dims(mat_a)
     b_rows, b_cols = self._dims(mat_b)
 
-    if a_rows != b_cols:
-      raise ValueError("The rows of the first matrix must be the same as the colums of the second matrix")
+    if a_cols != b_rows:
+      raise ValueError("These two matrices can not be multiplied!")
 
     for a_r in range(a_rows):
       r_sum = 0.0
       new_r = []
-      b_c = 0
       a = 0
       b = 0
         
