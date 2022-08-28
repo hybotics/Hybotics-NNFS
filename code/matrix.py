@@ -3,7 +3,7 @@ import re
 class Matrix():
   def __init__(self, mat_a=None, mat_b=None):
     self.init = True
-    
+
   def _dims(self, mat):
     rows = len(mat)
 
@@ -13,7 +13,7 @@ class Matrix():
       # Special case for a regular [] list
       rows = 1
       cols = len(mat)
-      
+
     return rows, cols
 
   def _save(self, m):
@@ -30,7 +30,7 @@ class Matrix():
   def _print(self, mat):
     print()
     print("<Debug> Printing the array...")
-    
+
     if self.rows == 1:
       print(mat)
     else:
@@ -48,19 +48,17 @@ class Matrix():
       raise ValueError("These two matrices can not be multiplied!")
 
     for a_r in range(a_rows):
-      r_sum = 0.0
       new_r = []
-      a = 0
-      b = 0
-        
+
       for b_c in range(b_cols):
-        r_sum = 0
-        
         for b_r in range(b_rows):
           a = mat_a[a_r][b_r]
           b = mat_b[b_r][b_c]
-          
+
           r_sum += (a * b)
+
+        if r_sum == int(r_sum):
+          r_sum = int(r_sum)
 
         new_r.append(r_sum)
 
@@ -78,7 +76,7 @@ class Matrix():
       # Standard list (1 dimension array)
       for c in range(cols):
         new_row.append([mat[c]])
-        
+
       rows = len(new_row)
       cols = 1
       new_mat = new_row
@@ -86,7 +84,7 @@ class Matrix():
       # Standard single column
       for r in range(rows):
         new_row.append(mat[r][0])
-      
+
       new_mat = new_row
     else:
       # This should handle everything else
@@ -96,9 +94,9 @@ class Matrix():
         new_row = []
         c = 0
 
-        while c < rows:          
+        while c < rows:
           new_row.append(mat[c][r])
-          
+
           c += 1
 
         new_mat.append(new_row)
@@ -113,9 +111,9 @@ class Matrix():
     txt = f"Printing the {text} matrix."
     txt = re.sub(r'[\s]+', ' ', txt)
     print(txt)
-    
+
     rows, cols = self._dims(mat)
-    
+
     if rows == 1:
       print(mat)
     else:
