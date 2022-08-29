@@ -1,15 +1,26 @@
-#!/usr/bin/env python3
+import numpy as np
 
-class Activation_ReLU():
-  def __init__(self, inputs):
-    self.outputs = []
+# ReLU activation
+class Activation_ReLU:
 
+    # Forward pass
+    def forward(self, inputs):
+        # Calculate output values from inputs
+        output = np.maximum(0, inputs)
 
-  def forward(self, inputs):
-    for inp in inputs:
-      if inp > 0:
-        outputs.append(1)
-      else:
-        outputs.append(0)
+        return output
 
-    return outputs
+# Softmax activation
+class Activation_Softmax:
+
+    # Forward pass
+    def forward(self, inputs):
+
+        # Get unnormalized probabilities
+        exp_values = np.exp(inputs - np.max(inputs, axis=1,
+                                            keepdims=True))
+        # Normalize them for each sample
+        probabilities = exp_values / np.sum(exp_values, axis=1,
+                                            keepdims=True)
+
+        return probabilities
