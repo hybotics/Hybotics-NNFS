@@ -1,7 +1,7 @@
 import numpy as np
 
 # ReLU activation
-class Activation_ReLU:
+class ReLU:
 
     # Forward pass
     def forward(self, inputs):
@@ -11,7 +11,7 @@ class Activation_ReLU:
         return output
 
 # Softmax activation
-class Activation_Softmax:
+class Softmax:
 
     # Forward pass
     def forward(self, inputs):

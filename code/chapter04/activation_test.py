@@ -3,8 +3,8 @@ import numpy as np
 import nnfs
 from nnfs.datasets import spiral_data
 
-from activations import Activation_ReLU
-from layers import Layer_Dense
+from activations import ReLU
+from layers import Dense
 
 inputs = [0, 2, -1, 3.3, -2.7, 1.1, 2.2, -100]
 
@@ -12,9 +12,9 @@ inputs = [0, 2, -1, 3.3, -2.7, 1.1, 2.2, -100]
 X, y = spiral_data(samples=100, classes=3)
 
 # Create Dense layer with 2 input features and 3 output values
-dense1 = Layer_Dense(2, 3)
+dense1 = Dense(2, 3)
 
-activation1 = Activation_ReLU()
+activation1 = ReLU()
 
 # Perform a forward pass of our training data through this layer
 layer_output = dense1.forward(X)
