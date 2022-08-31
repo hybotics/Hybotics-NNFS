@@ -3,6 +3,9 @@ import numpy as np
 import nnfs
 from nnfs.datasets import spiral_data
 
+# A parameter of 0 will insure the data is repeatable for testing purposes
+nnfs.init(0)
+
 from activations import ReLU
 from layers import Dense
 
